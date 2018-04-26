@@ -20,7 +20,7 @@ public class MongoDBJDBC {
 
             //MongoCredential.createScramSha1Credential()三个参数分别为 用户名 数据库名称 密码
             MongoCredential credential = MongoCredential.
-                    createScramSha1Credential("maxsu", "databaseName", "pwd123".toCharArray());
+                    createScramSha1Credential("maxsu", "admin", "pwd123".toCharArray());
             List<MongoCredential> credentials = new ArrayList<MongoCredential>();
             credentials.add(credential);
 
@@ -28,8 +28,12 @@ public class MongoDBJDBC {
             MongoClient mongoClient = new MongoClient(addrs,credentials);
 
             //连接到数据库
-            MongoDatabase mongoDatabase = mongoClient.getDatabase("databaseName");
-            System.out.println("Connect to database successfully");
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("admin");
+            System.out.println("创建数据库成功");
+
+            mongoDatabase.createCollection("test");
+            System.out.println("集合创建成功");
+
         } catch (Exception e) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
         }
