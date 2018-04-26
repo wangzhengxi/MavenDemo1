@@ -28,7 +28,7 @@ public class MongoDBJDBC {
             MongoClient mongoClient = new MongoClient(addrs,credentials);
 
             //连接到数据库
-            MongoDatabase mongoDatabase = mongoClient.getDatabase("admin");
+            MongoDatabase mongoDatabase = mongoClient.getDatabase("mycol11");
             System.out.println("创建数据库成功");
 
             mongoDatabase.createCollection("test");
